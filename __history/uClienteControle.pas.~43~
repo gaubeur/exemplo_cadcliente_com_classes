@@ -117,21 +117,6 @@ begin
     exit;
   end;
 
-  auxsql := ' select codigo from tblcliente where codigo = :codigo ';
-  FControle.SqqGeral.Close;
-  FControle.SqqGeral.CommandText := auxsql;
-  FControle.SqqGeral.Params[0].AsString := Self.Codigo;
-
-  try
-    FControle.SqqGeral.Open;
-    if FControle.SqqGeral.Eof = False then begin
-      Result := False;
-      exit;
-    end;
-  except
-    Result := False;
-    exit;
-  end;
 
   auxsql := ' insert into tblcliente ';
   auxsql := auxsql + ' ( codigo, nome, telefone ) ';
@@ -199,6 +184,10 @@ begin
   FControle.SqqGeral.Params[0].AsString := Self.Codigo;
   try
     FControle.SqqGeral.Open;
+    if FControle.SqqGeral.Eof = False then begin
+      Result := False;
+      exit;
+    end;
     Self.Nome     := FControle.SqqGeral.FieldByName('nome').AsString;
     Self.Telefone := FControle.SqqGeral.FieldByName('telefone').AsString;
     Result := True;

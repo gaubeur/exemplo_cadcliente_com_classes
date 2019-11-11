@@ -2,7 +2,7 @@ object FrmCadCliente: TFrmCadCliente
   Left = 0
   Top = 0
   Caption = 'Cadastro de Cliente'
-  ClientHeight = 418
+  ClientHeight = 382
   ClientWidth = 447
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -125,17 +125,5 @@ object FrmCadCliente: TFrmCadCliente
     FixedCols = 0
     RowCount = 100
     TabOrder = 8
-  end
-  object stabarprincipal: TStatusBar
-    Left = 0
-    Top = 399
-    Width = 447
-    Height = 19
-    Color = clRed
-    Panels = <
-      item
-        Width = 50
-      end>
-    SizeGrip = False
   end
 end

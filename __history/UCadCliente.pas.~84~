@@ -182,6 +182,10 @@ end;
 
 procedure TFrmCadCliente.BtnIncluirClick(Sender: TObject);
 begin
+  Conexao.Destroy;
+  Controle.Destroy;
+  Cliente.Destroy;
+
 
   if Conexao.ConexaoBanco.Connected = False then begin
     stabarprincipal.Panels[0].Text := 'Banco de Dados NÃO CONECTADO';

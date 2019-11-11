@@ -19,7 +19,6 @@ type
     BtnExcluir: TButton;
     BtnEncerrar: TButton;
     StrGrdCliente: TStringGrid;
-    stabarprincipal: TStatusBar;
     procedure BtnIncluirClick(Sender: TObject);
     procedure LbledtCodigoEnter(Sender: TObject);
     procedure LbledtCodigoExit(Sender: TObject);
@@ -80,10 +79,9 @@ end;
 procedure TFrmCadCliente.BtnAlterarClick(Sender: TObject);
 begin
 
-  if Conexao.ConexaoBanco.Connected = False then begin
-    stabarprincipal.Panels[0].Text := 'Banco de Dados NÃO CONECTADO';
-    exit;
-  end;
+//  Conexao  := TConexaoBanco.Create;
+//  Controle := TControle.Create;
+//  Cliente  := TClienteControle.Create(controle);
 
   cliente.Codigo   := LbledtCodigo.Text;
   cliente.Nome     := LbledtNome.Text;
@@ -108,20 +106,14 @@ end;
 procedure TFrmCadCliente.BtnConsultarClick(Sender: TObject);
 begin
 
-  if Conexao.ConexaoBanco.Connected = False then begin
-    stabarprincipal.Panels[0].Text := 'Banco de Dados NÃO CONECTADO';
-    exit;
-  end;
-
-  if Conexao.ConexaoBanco.Connected = False then begin
-    stabarprincipal.Panels[0].Text := 'Banco de Dados NÃO CONECTADO';
-    exit;
-  end;
-
   if Trim(LbledtCodigo.Text) = '' then begin
     application.MessageBox('Informe o Código do Cliente','Consistência');
     exit;
   end;
+
+//  Conexao  := TConexaoBanco.Create;
+//  Controle := TControle.Create;
+//  Cliente  := TClienteControle.Create(controle);
 
   cliente.Codigo   := LbledtCodigo.Text;
   if cliente.PesquisaCliente = True then begin
@@ -141,26 +133,15 @@ end;
 
 procedure TFrmCadCliente.BtnEncerrarClick(Sender: TObject);
 begin
-
-  Conexao.Destroy;
-  Controle.Destroy;
-  Cliente.Destroy;
-
   close;
 end;
 
 procedure TFrmCadCliente.BtnExcluirClick(Sender: TObject);
 begin
 
-
-  if MessageDlg('Tem Certeza que Deseja Excluir o Cliente',mtconfirmation,[mbyes,mbno],0) = mrNo then begin
-    exit;
-  end;
-
-  if Conexao.ConexaoBanco.Connected = False then begin
-    stabarprincipal.Panels[0].Text := 'Banco de Dados NÃO CONECTADO';
-    exit;
-  end;
+//  Conexao  := TConexaoBanco.Create;
+//  Controle := TControle.Create;
+//  Cliente  := TClienteControle.Create(controle);
 
   cliente.Codigo   := LbledtCodigo.Text;
   if cliente.ExcluiCliente = True then begin
@@ -183,12 +164,17 @@ end;
 procedure TFrmCadCliente.BtnIncluirClick(Sender: TObject);
 begin
 
-  if Conexao.ConexaoBanco.Connected = False then begin
-    stabarprincipal.Panels[0].Text := 'Banco de Dados NÃO CONECTADO';
+//  Conexao  := TConexaoBanco.Create;
+//  Controle := TControle.Create;
+//  Cliente  := TClienteControle.Create(controle);
+
+  cliente.Codigo   := LbledtCodigo.Text;
+  if cliente.PesquisaCliente = False then begin
+    showmessage('Código do Cliente Já Cadastrado');
+    LbledtCodigo.SetFocus;
     exit;
   end;
 
-  cliente.Codigo   := LbledtCodigo.Text;
   cliente.Nome     := LbledtNome.Text;
   cliente.Telefone := LbledtTelefone.Text;
   if cliente.InsereCliente = True then begin
@@ -196,10 +182,14 @@ begin
     showmessage('Cliente Incluido com Sucesso');
   end else
   begin
-    showmessage('Código do Cliente já Cadastrado ou Problema na Inclusão do Cliente');
+    showmessage('Problema na Inclusão do Cliente');
   end;
 
   view_cliente;
+
+//  Conexao.Destroy;
+//  Controle.Destroy;
+//  Cliente.Destroy;
 
 end;
 

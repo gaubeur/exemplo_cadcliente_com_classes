@@ -131,11 +131,13 @@ object FrmCadCliente: TFrmCadCliente
     Top = 399
     Width = 447
     Height = 19
-    Color = clRed
     Panels = <
       item
         Width = 50
       end>
     SizeGrip = False
+    ExplicitLeft = 312
+    ExplicitTop = 392
+    ExplicitWidth = 0
   end
 end

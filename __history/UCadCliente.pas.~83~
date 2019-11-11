@@ -141,11 +141,6 @@ end;
 
 procedure TFrmCadCliente.BtnEncerrarClick(Sender: TObject);
 begin
-
-  Conexao.Destroy;
-  Controle.Destroy;
-  Cliente.Destroy;
-
   close;
 end;
 
@@ -200,6 +195,10 @@ begin
   end;
 
   view_cliente;
+
+//  Conexao.Destroy;
+//  Controle.Destroy;
+//  Cliente.Destroy;
 
 end;
 

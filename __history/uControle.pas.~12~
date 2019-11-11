@@ -4,7 +4,7 @@ interface
 
 uses
 
-  sqlexpr, forms , uconexaobanco, SysUtils;
+  sqlexpr, forms , uconexaobanco;
 
 
 type

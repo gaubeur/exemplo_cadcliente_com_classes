@@ -80,11 +80,6 @@ end;
 procedure TFrmCadCliente.BtnAlterarClick(Sender: TObject);
 begin
 
-  if Conexao.ConexaoBanco.Connected = False then begin
-    stabarprincipal.Panels[0].Text := 'Banco de Dados NÃO CONECTADO';
-    exit;
-  end;
-
   cliente.Codigo   := LbledtCodigo.Text;
   cliente.Nome     := LbledtNome.Text;
   cliente.Telefone := LbledtTelefone.Text;
@@ -107,16 +102,6 @@ end;
 
 procedure TFrmCadCliente.BtnConsultarClick(Sender: TObject);
 begin
-
-  if Conexao.ConexaoBanco.Connected = False then begin
-    stabarprincipal.Panels[0].Text := 'Banco de Dados NÃO CONECTADO';
-    exit;
-  end;
-
-  if Conexao.ConexaoBanco.Connected = False then begin
-    stabarprincipal.Panels[0].Text := 'Banco de Dados NÃO CONECTADO';
-    exit;
-  end;
 
   if Trim(LbledtCodigo.Text) = '' then begin
     application.MessageBox('Informe o Código do Cliente','Consistência');
@@ -141,24 +126,13 @@ end;
 
 procedure TFrmCadCliente.BtnEncerrarClick(Sender: TObject);
 begin
-
-  Conexao.Destroy;
-  Controle.Destroy;
-  Cliente.Destroy;
-
   close;
 end;
 
 procedure TFrmCadCliente.BtnExcluirClick(Sender: TObject);
 begin
 
-
   if MessageDlg('Tem Certeza que Deseja Excluir o Cliente',mtconfirmation,[mbyes,mbno],0) = mrNo then begin
-    exit;
-  end;
-
-  if Conexao.ConexaoBanco.Connected = False then begin
-    stabarprincipal.Panels[0].Text := 'Banco de Dados NÃO CONECTADO';
     exit;
   end;
 
@@ -184,9 +158,9 @@ procedure TFrmCadCliente.BtnIncluirClick(Sender: TObject);
 begin
 
   if Conexao.ConexaoBanco.Connected = False then begin
-    stabarprincipal.Panels[0].Text := 'Banco de Dados NÃO CONECTADO';
-    exit;
+    showmessage('banco nao conectado');
   end;
+
 
   cliente.Codigo   := LbledtCodigo.Text;
   cliente.Nome     := LbledtNome.Text;
@@ -200,6 +174,10 @@ begin
   end;
 
   view_cliente;
+
+//  Conexao.Destroy;
+//  Controle.Destroy;
+//  Cliente.Destroy;
 
 end;
 

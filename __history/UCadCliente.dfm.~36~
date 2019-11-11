@@ -126,16 +126,18 @@ object FrmCadCliente: TFrmCadCliente
     RowCount = 100
     TabOrder = 8
   end
-  object stabarprincipal: TStatusBar
+  object StatusBar1: TStatusBar
     Left = 0
     Top = 399
     Width = 447
     Height = 19
-    Color = clRed
     Panels = <
       item
         Width = 50
       end>
     SizeGrip = False
+    ExplicitLeft = 312
+    ExplicitTop = 392
+    ExplicitWidth = 0
   end
 end
