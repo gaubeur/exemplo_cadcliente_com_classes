@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/11/09 09:59:02.006.pas,C:\Users\Mauricio\Documents\RAD Studio\Projects\Unit1.pas=C:\Projetos\Prova_GTR - D2010\UCadCliente.pas</Transaction>
+    <Transaction>2019/11/09 09:59:02.006.dfm,C:\Users\Mauricio\Documents\RAD Studio\Projects\Unit1.dfm=C:\Projetos\Prova_GTR - D2010\UCadCliente.dfm</Transaction>
+    <Transaction>2019/11/09 09:59:13.268.dproj,C:\Users\Mauricio\Documents\RAD Studio\Projects\Project1.dproj=C:\Projetos\Prova_GTR - D2010\ProvaGTR.dproj</Transaction>
+    <Transaction>2019/11/09 23:40:23.321.pas,C:\Projetos\Prova_GTR - D2010\Unit1.pas=C:\Projetos\Prova_GTR - D2010\uControle.pas</Transaction>
+    <Transaction>2019/11/10 00:01:15.452.pas,C:\Projetos\Prova_GTR - D2010\Unit1.pas=C:\Projetos\Prova_GTR - D2010\uClienteControle.pas</Transaction>
+  </Transactions>
+</BorlandProject>

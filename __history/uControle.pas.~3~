@@ -1,0 +1,12 @@
+unit uControle;
+
+interface
+
+uses
+
+  windows, messages, sysutils, classes, controls, forms, dialogs,
+  variants, contnrs, sqlexpr, strutils, inifiles, uconexaobanco;
+
+implementation
+
+end.

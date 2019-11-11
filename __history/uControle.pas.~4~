@@ -1,0 +1,27 @@
+unit uControle;
+
+interface
+
+uses
+
+  windows, messages, sysutils, classes, controls, forms, dialogs,
+  variants, contnrs, sqlexpr, strutils, inifiles, uconexaobanco;
+
+
+types
+
+TControle = class
+private
+  { private declarations }
+protected
+  { protected declarations }
+public
+  { public declarations }
+
+published
+  { published declarations }
+end;
+
+implementation
+
+end.

@@ -1,0 +1,111 @@
+unit uConexaoBanco;
+
+interface
+
+uses
+  SqlExpr, iniFiles, SysUtils, Forms, Dialogs;
+
+type
+
+TConexaoBanco = class
+private
+  { private declarations }
+  FConexaoBanco : TSQLConnection;
+protected
+  { protected declarations }
+public
+  { public declarations }
+  Constructor Create;
+  Destructor Destroy; override;
+  function GetConexao : TSQLConnection;
+  property ConexaoBanco : TSQLConnection read GetConexao;
+published
+  { published declarations }
+end;
+
+implementation
+
+{ TConexaoBanco }
+
+constructor TConexaoBanco.Create;
+var
+  arquivoini, hostname, database, drivername, username, password : String;
+  localserver : Integer;
+  configuracoes : Tinifile;
+begin
+
+  arquivoini := extractfilepath(application.exename) + 'config.ini';
+
+
+  if not fileexists(arquivoini) then begin
+    configuracoes := TIniFile.Create(arquivoini);
+    configuracoes.WriteString('dados', 'Hostname', '189.57.21.98');
+    configuracoes.WriteString('dados', 'DataBase', 'greenbusiness');
+    configuracoes.WriteString('dados', 'DriverName', 'MSSQL');
+    configuracoes.WriteString('dados', 'UserName', 'sa');
+    configuracoes.WriteString('dados', 'Password', '@Ivan!5273');
+    configuracoes.free;
+    ShowMessage('Mensagem armazenada com sucesso!');
+    exit;
+  end;
+
+{
+  configuracoes := TIniFile.Create(arquivoini);
+
+  try
+    begin
+      hostname   := configuracoes.readstring('dados','HostName', 'erro');
+      database   := configuracoes.readstring('dados','DataBase', 'erro');
+      drivername := configuracoes.readstring('dados','DriverName', 'erro');
+      username   := configuracoes.readstring('dados','UserName', 'erro');
+      password   := configuracoes.readstring('dados','Password','erro');
+    end;
+  finally
+    configuracoes.free;
+  end;
+}
+
+//  try
+//    begin
+
+      // conexao com o mssql
+      FConexaoBanco := TSQLConnection.Create(Application);
+      FConexaoBanco.Connected := False;
+      FConexaoBanco.ConnectionName := 'PROVAGTR';
+      FConexaoBanco.Params.Clear;
+      FConexaoBanco.LoadParamsFromIniFile(arquivoini);
+      FConexaoBanco.KeepConnection := False;
+      FConexaoBanco.DriverName := 'MSSQL';
+      FConexaoBanco.LibraryName := 'dbxmss.dll';
+      FConexaoBanco.VendorLib := 'sqlncli.dll';
+      FConexaoBanco.GetDriverFunc := 'getSQLDriverMSSQL';
+      FConexaoBanco.LoginPrompt := False;
+      FConexaoBanco.Connected := True;
+
+{
+      FConexaoBanco.Params.Values['DataBase']  := database;
+      FConexaoBanco.Params.Values['UserName'] := username;
+      FConexaoBanco.Params.Values['Password']  := password;
+      FConexaoBanco.Params.Values['HostName']  := hostname;
+}
+//    end;
+//  except
+//    showmessage('Erro ao Conectar o Banco de Dados');
+///  end;
+
+end;
+
+destructor TConexaoBanco.Destroy;
+begin
+  FConexaoBanco.Free;
+  inherited;
+end;
+
+function TConexaoBanco.GetConexao: TSQLConnection;
+begin
+
+  Result := FConexaoBanco;
+
+end;
+
+end.

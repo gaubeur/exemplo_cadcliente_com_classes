@@ -1,0 +1,16 @@
+program ProvaGTR;
+
+uses
+  Forms,
+  UCadCliente in 'UCadCliente.pas' {Form1},
+  uConexaoBanco in 'uConexaoBanco.pas',
+  uControle in 'uControle.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.
