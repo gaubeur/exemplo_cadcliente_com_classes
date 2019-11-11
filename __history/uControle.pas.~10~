@@ -4,7 +4,7 @@ interface
 
 uses
 
-  sqlexpr, forms , uconexaobanco, SysUtils;
+  sqlexpr, forms , uconexaobanco;
 
 
 type
@@ -38,9 +38,8 @@ end;
 
 destructor TControle.Destroy;
 begin
-  FreeAndNil( FConexao );
-  FreeAndNil( FSqqGeral );
-
+  FConexao.Free;
+  FSqqGeral.Free;
   inherited;
 end;
 

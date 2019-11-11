@@ -36,6 +36,7 @@ begin
 
   arquivoini := extractfilepath(application.exename) + 'config.ini';
 
+
   if not fileexists(arquivoini) then begin
     configuracoes := TIniFile.Create(arquivoini);
     configuracoes.WriteString('dados', 'Hostname', '189.57.21.98');
@@ -44,6 +45,8 @@ begin
     configuracoes.WriteString('dados', 'UserName', 'sa');
     configuracoes.WriteString('dados', 'Password', '@Ivan!5273');
     configuracoes.free;
+//    ShowMessage('Mensagem armazenada com sucesso!');
+//    exit;
   end;
 
 {

@@ -117,17 +117,13 @@ begin
     exit;
   end;
 
-  auxsql := ' select codigo from tblcliente where codigo = :codigo ';
+  auxsql := ' select codigo tblcliente where codigo = :codigo ';
   FControle.SqqGeral.Close;
   FControle.SqqGeral.CommandText := auxsql;
   FControle.SqqGeral.Params[0].AsString := Self.Codigo;
 
   try
-    FControle.SqqGeral.Open;
-    if FControle.SqqGeral.Eof = False then begin
-      Result := False;
-      exit;
-    end;
+    FControle.SqqGeral.ExecSQL();
   except
     Result := False;
     exit;
